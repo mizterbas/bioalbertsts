@@ -1,0 +1,22 @@
+
+!python -m albert.run_classifier \
+  --data_dir=gs://emudria-cs53-1/REData/datasets/RE/GAD \
+  --output_dir=gs://emudria-cs53-1/REData/outputs/GAD/exp01 \
+  --init_checkpoint=gs://emudria-cs53-1/REData/model_weights/BioAlbert-Large/model.ckpt-best \
+  --albert_config_file=gs://emudria-cs53-1/REData/models/large/albert_config.json \
+  --spm_model_file=gs://emudria-cs53-1/REData/models/large/30k-clean.model \
+  --vocab_file=gs://emudria-cs53-1/REData/models/large/30k-clean.vocab \
+  --do_train=True \
+  --do_eval=True \
+  --do_predict=True \
+  --do_lower_case \
+  --max_seq_length=128 \
+  --task_name=GAD \
+  --warmup_step=1000 \
+  --learning_rate=3e-5 \
+  --train_step=10000 \
+  --train_batch_size=32  \
+  --num_train_epochs=5.0 \
+  --tpu_name=grpc://10.38.233.170:8470 \
+  --use_tpu=True \
+  --save_checkpoints_steps=500 
